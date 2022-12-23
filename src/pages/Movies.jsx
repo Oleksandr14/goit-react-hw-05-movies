@@ -20,7 +20,6 @@ const Movies = () => {
 
     fetchMovieByQuery(query)
       .then(r => setQueryName(r.results))
-
       .catch(error => console.log(error.message));
   }, [query]);
 

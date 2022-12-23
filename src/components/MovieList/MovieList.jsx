@@ -1,19 +1,31 @@
-import { StyledLink, Item } from 'components/MovieList/MovieList.styled';
+import {
+  StyledLink,
+  Item,
+  List,
+  Wrapper,
+  Img,
+} from 'components/MovieList/MovieList.styled';
 import { GiFilmStrip } from 'react-icons/gi';
 
 const MovieList = ({ queryNames, location }) => {
   return (
     <div>
-      <ul>
-        {queryNames?.map(({ id, original_title }) => (
+      <List>
+        {queryNames?.map(({ id, original_title, poster_path }) => (
           <Item key={id}>
-            <GiFilmStrip />
             <StyledLink to={`${id}`} state={{ from: location }}>
-              {original_title}
+              <Img
+                src={`https://image.tmdb.org/t/p/w300${poster_path}`}
+                alt={original_title}
+              />
+              <Wrapper>
+                <GiFilmStrip />
+                <p>{original_title}</p>
+              </Wrapper>
             </StyledLink>
           </Item>
         ))}
-      </ul>
+      </List>
     </div>
   );
 };
